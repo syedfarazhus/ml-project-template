@@ -1,0 +1,16 @@
+numpy
+pandas
+scikit-learn
+matplotlib
+seaborn
+plotly
+
+# For many ML projects later
+xgboost
+lightgbm
+
+# For apps / quick demos
+streamlit
+
+# For testing
+pytest
