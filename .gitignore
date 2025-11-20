@@ -1,8 +1,12 @@
-.venv/
-__pycache__/
-.ipynb_checkpoints/
-models/
-data/raw/
-data/processed/
-reports/
-.env
+# Ignore contents, but allow placeholder files
+models/*
+!models/.gitkeep
+
+data/raw/*
+!data/raw/.gitkeep
+
+data/processed/*
+!data/processed/.gitkeep
+
+reports/*
+!reports/.gitkeep
