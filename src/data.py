@@ -1,14 +1,25 @@
+import numpy as np
 import pandas as pd
-from pathlib import Path
 
-DATA_DIR = Path("data")
-RAW_DIR = DATA_DIR / "raw"
-PROCESSED_DIR = DATA_DIR / "processed"
 
-RAW_DIR.mkdir(parents=True, exist_ok=True)
-PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
+def make_synthetic_regression(
+    n_samples: int = 500,
+    n_features: int = 5,
+    noise: float = 1.0,
+    random_state: int = 42,
+) -> pd.DataFrame:
+    """
+    Creates a synthetic regression dataset as a placeholder.
+    Later you will replace this with a real dataset loader.
+    """
+    rng = np.random.default_rng(random_state)
+    X = rng.normal(size=(n_samples, n_features))
 
-def load_data(path: str) -> pd.DataFrame:
-    """Generic CSV loader. Later you'll swap this to your actual dataset."""
-    full_path = RAW_DIR / path
-    return pd.read_csv(full_path)
+    # Simple linear relationship with some noise
+    coef = np.array([3, -2, 1.5, 0.5, 0.2])[:n_features]
+    y = X @ coef + noise * rng.normal(size=n_samples)
+
+    feature_names = [f"feature_{i}" for i in range(n_features)]
+    df = pd.DataFrame(X, columns=feature_names)
+    df["target"] = y
+    return df
